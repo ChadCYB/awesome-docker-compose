@@ -33,6 +33,7 @@ As specified in the file when deploying the application, docker-compose maps:
 Make sure port `3000, 3022` on the host is not being used by another container, otherwise the port should be changed.
 
 ## Deploy with docker-compose
+Before deploy it, don't forget to **change your database password**.
 ```
 $ docker-compose up -d
 
