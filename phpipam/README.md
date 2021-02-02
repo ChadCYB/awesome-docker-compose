@@ -43,7 +43,6 @@ Creating network "phpipam_default" with the default driver
 Creating phpipam_phpipam-mariadb_1 ... done
 Creating phpipam_phpipam-cron_1    ... done
 Creating phpipam_phpipam-web_1     ... done
-...
 ```
 
 ## Expected result

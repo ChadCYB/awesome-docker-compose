@@ -39,7 +39,6 @@ $ docker-compose up -d
 Creating network "docker-registry_registry-ui-net" with the default driver
 Creating docker-registry_registry_1 ... done
 Creating docker-registry_ui_1       ... done
-...
 ```
 
 ## Expected result

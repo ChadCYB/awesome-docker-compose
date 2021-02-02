@@ -40,7 +40,6 @@ $ docker-compose up -d
 Creating network "gitea_net_gitea" with the default driver
 Creating gitea_gitea_db_1 ... done
 Creating gitea_gitea_server_1 ... done
-...
 ```
 
 ## Expected result

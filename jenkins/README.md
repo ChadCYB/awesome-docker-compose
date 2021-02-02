@@ -38,7 +38,6 @@ $ docker-compose up -d
 Creating network "jenkins_net_jenkins" with the default driver
 Creating jenkins_docker_1 ... done
 Creating jenkins_jenkins_server_1 ... done
-...
 ```
 
 ## Expected result

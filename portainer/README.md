@@ -35,7 +35,6 @@ $ docker-compose up -d
 
 Creating network "portainer_default" with the default driver
 Creating portainer_registry_1 ... done
-...
 ```
 
 ## Expected result
