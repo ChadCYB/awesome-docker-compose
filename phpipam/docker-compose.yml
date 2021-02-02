@@ -1,0 +1,40 @@
+version: '3'
+
+services:
+  phpipam-web:
+    image: phpipam/phpipam-www:latest
+    ports:
+      - "8080:80"
+    restart: unless-stopped
+    environment:
+      - TZ=Asia/Taipei
+      - IPAM_DATABASE_HOST=phpipam-mariadb
+      - IPAM_DATABASE_PASS=<ENTER YOUR PASSWORD>
+      - IPAM_DATABASE_WEBHOST=%
+      - IPAM_GMAPS_API_KEY=<ENTER YOUR API_KEY>
+      - IPAM_GMAPS_API_GEOCODE_KEY=<ENTER YOUR GEOCODE_KEY>
+    #volumes:
+            #      - ./phpipam-logo:/phpipam/css/images/logo
+            #      - ./phpipam-www:/phpipam
+    depends_on:
+      - phpipam-mariadb
+
+  phpipam-cron:
+    image: phpipam/phpipam-cron:latest
+    restart: unless-stopped
+    environment:
+      - TZ=Asia/Taipei
+      - IPAM_DATABASE_HOST=phpipam-mariadb
+      - IPAM_DATABASE_PASS=<ENTER YOUR PASSWORD>
+      - SCAN_INTERVAL=1h
+    depends_on:
+      - phpipam-mariadb
+
+  phpipam-mariadb:
+    image: mariadb:latest
+    restart: unless-stopped
+    environment:
+      - MYSQL_ROOT_PASSWORD=<ENTER YOUR PASSWORD>
+    volumes:
+      - ./phpipam-db-data:/var/lib/mysql
+
