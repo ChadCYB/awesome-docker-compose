@@ -1,0 +1,43 @@
+version: "3.8"
+
+networks:
+  net_gitea:
+    external: false
+
+services:
+  gitea_server:
+    image: gitea/gitea:1.12.4
+    ports:
+       - "3000:3000"
+       - "3022:22"
+    restart: unless-stopped
+    environment:
+      - USER_UID=1000
+      - USER_GID=1000
+      - DB_TYPE=mysql
+      - DB_HOST=gitea_db:3306
+      - DB_NAME=gitea
+      - DB_USER=gitea
+      - DB_PASSWD=gitea
+    networks:
+      - net_gitea
+    volumes:
+      - ./gitea-data:/data
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+    depends_on:
+      - gitea_db
+
+  gitea_db:
+    image: mysql:5.7
+    restart: unless-stopped
+    environment:
+      - MYSQL_ROOT_PASSWORD=gitea
+      - MYSQL_USER=gitea
+      - MYSQL_PASSWORD=gitea
+      - MYSQL_DATABASE=gitea
+    networks:
+      - net_gitea
+    volumes:
+      - ./gitea-mysql:/var/lib/mysql
+
