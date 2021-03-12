@@ -83,5 +83,6 @@ jenkins_server_1  | Can not write to /var/jenkins_home/copy_reference_file.log. 
 ```
 Change the folder owner to current user.
 ```
-$ sudo chown -R $USER:$USER *
+$ sudo chown -R $USER:$USER jenkins-data/
+$ sudo chown -R $USER:$USER jenkins-docker-certs/
 ```
